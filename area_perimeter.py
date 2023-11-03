@@ -20,6 +20,7 @@ class Rectangle(Shape):
     def __init__(self, str_input):
         super().__init__(str_input)
         self.set_data_for_calculation()
+        
     def set_data_for_calculation(self):
         self.a = float(self.list_input[2]) - float(self.list_input[-2])
         self.b = float(self.list_input[3]) - float(self.list_input[-1])
@@ -45,6 +46,7 @@ class Square(Shape):
     def __init__(self, str_input):
         super().__init__(str_input)
         self.set_data_for_calculation()
+        
     def set_data_for_calculation(self):
         self.a = float(self.list_input[-1])
         self.b = float(self.list_input[-1])
