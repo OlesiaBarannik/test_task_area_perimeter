@@ -1,4 +1,4 @@
-from math import pi
+from math import pi, sqrt
 class Shape:
     def __init__(self, str_input):
         self.list_input = str_input.split(" ")
@@ -20,7 +20,10 @@ class Rectangle(Shape):
     def __init__(self, str_input):
         super().__init__(str_input)
         self.set_data_for_calculation()
-        
+        if self.check_side() is False:
+            raise ValueError("incorrect parametrs")
+
+
     def set_data_for_calculation(self):
         self.a = float(self.list_input[2]) - float(self.list_input[-2])
         self.b = float(self.list_input[3]) - float(self.list_input[-1])
@@ -46,7 +49,7 @@ class Square(Shape):
     def __init__(self, str_input):
         super().__init__(str_input)
         self.set_data_for_calculation()
-        
+
     def set_data_for_calculation(self):
         self.a = float(self.list_input[-1])
         self.b = float(self.list_input[-1])
@@ -87,10 +90,39 @@ class Circle(Shape):
             return False
         return True
 
+
     def get_Result(self):
         if self.check_side() is True:
             return (f"{self.list_input[0]}'s circumference {self.get_Perimeter()} Area {self.get_Area()}")
+        return "Not valid data!"
+
+class IsolessesTriangle(Shape):
+    def __init__(self, str_input):
+        super().__init__(str_input)
+        self.set_data_for_calculation()
+        if self.check_side() is False:
+            raise ValueError("incorrect parametrs")
+
+    def set_data_for_calculation(self):
+        self.a = float(self.list_input[1])
+
+
+    def get_Perimeter(self):
+        return self.a * 3
+
+    def get_Area(self):
+        return round((self.a**2 * sqrt(3))/4, 2)
+
+    def check_side(self):
+        if self.a <= 0:
+            return False
+        return True
+
+    def get_Result(self):
+        if self.check_side() is True:
+            return (f"{self.list_input[0]} Perimeter {self.get_Perimeter()} Area {self.get_Area()}")
         return "Not valid data"
 
 
+#"IsolessesTriangle 4"
 
